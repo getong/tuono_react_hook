@@ -1,25 +1,29 @@
-// src/components/PokemonLink.tsx
-import type { JSX } from 'react'
-import { Link } from 'tuono'
+import type { JSX } from "react";
+import { Link } from "tuono";
 
-import styles from './PokemonLink.module.css'
+import styles from "./PokemonLink.module.css";
 
-interface PokemonLinkProps {
-  id: number
-  name: string
+interface Pokemon {
+  name: string;
 }
 
 export default function PokemonLink({
+  pokemon,
   id,
-  name,
-}: PokemonLinkProps): JSX.Element {
+}: {
+  pokemon: Pokemon;
+  id: number;
+}): JSX.Element {
   return (
-    <Link href={`/pokemons/${name}`} className={styles.link} id={id.toString()}>
-      {name}
+    <Link
+      className={styles.link}
+      href={`/pokemons/${pokemon.name}`}
+      id={pokemon.name}
+    >
+      {pokemon.name}
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        alt=""
       />
     </Link>
-  )
+  );
 }

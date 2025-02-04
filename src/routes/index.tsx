@@ -1,17 +1,21 @@
 // src/routes/index.tsx
-import type { JSX } from 'react'
-import type { TuonoProps } from 'tuono'
+import type { JSX } from "react";
+import type { TuonoProps } from "tuono";
 
-import PokemonLink from '../components/PokemonLink'
+import PokemonLink from "@/components/PokemonLink";
+
+interface Pokemon {
+  name: string;
+}
 
 interface IndexProps {
-  results: Array<{ name: string; url: string }>
+  results: Array<Pokemon>;
 }
 
 export default function IndexPage({
   data,
 }: TuonoProps<IndexProps>): JSX.Element | null {
-  if (!data?.results) return null
+  if (!data?.results) return null;
 
   return (
     <>
@@ -42,13 +46,13 @@ export default function IndexPage({
           <img src="react.svg" className="react" />
         </div>
       </div>
-      <ul style={{ flexWrap: 'wrap', display: 'flex', gap: 10 }}>
-        <PokemonLink name="GOAT" id={0} />
+      <ul style={{ flexWrap: "wrap", display: "flex", gap: 10 }}>
+        <PokemonLink pokemon={{ name: "GOAT" }} id={0} />
 
         {data.results.map((pokemon, i) => (
-          <PokemonLink key={i + 1} name={pokemon.name} id={i + 1} />
+          <PokemonLink key={i} pokemon={pokemon} id={i + 1} />
         ))}
       </ul>
     </>
-  )
+  );
 }

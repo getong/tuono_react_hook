@@ -1,8 +1,7 @@
-import type { ReactNode, JSX } from 'react'
-import { TuonoScripts } from 'tuono'
+import type { ReactNode, JSX } from "react";
 
 interface RootLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
@@ -10,8 +9,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     <html>
       <body>
         <main>{children}</main>
-        <TuonoScripts />
       </body>
     </html>
-  )
+  );
 }
